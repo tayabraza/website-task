@@ -67,6 +67,7 @@
   }
   .learn:hover{
     background-color: #ececec;
+    color: #000 !important;
   }
   .donate{
     border-bottom: 0.2rem solid #cf1b46;
