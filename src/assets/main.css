@@ -47,6 +47,10 @@ main{
     color: var(--secondary-text);
     text-decoration: none;
 }
+.btn-primary:hover{
+    background-color: var(--primary-bg);
+    color: var(--white-text);
+}
 .btn-secondary{
     background-color: var(--secondary-bg);
     color: var(--white-text);
