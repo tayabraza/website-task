@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+:root{
+    --primary-bg: #2f8375;
+    --primary-text: #2f8375;
+    --secondary-bg: #cf1b46;
+    --secondary-text: #cf1b46;
+    --white-bg: #ffffff;
+    --white-text: #ffffff;
+    --black-bg:#000000;
+    --black-text:#000000;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html,
+body {
+  font-size: 16px;
+  font-family: Rubik, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#app{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+main{
+    min-height: 50vh;
+}
+.main-heading{
+    margin: 2rem auto;
+}
+.page{
+    text-align: center;
+}
+.btn{
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+.btn-primary{
+    background-color: var(--white-bg);
+    color: var(--secondary-text);
+    text-decoration: none;
+}
+.btn-secondary{
+    background-color: var(--secondary-bg);
+    color: var(--white-text);
+    text-decoration: none;
+}
+.primary-bg{
+    background-color: var(--primary-bg);
+}
+.primary-text{
+    color: var(--primary-text);
+}
+.secondary-bg{
+    background-color: var(--secondary-bg);
+}
+.secondary-text{
+    color: var(--secondary-text);
+}
+.white-bg{
+    background-color: var(--white-bg);
+}
+.white-text{
+    color: var(--white-text);
+}
+.black-bg{
+    background-color: var(--black-bg);
+}
+.black-text{
+    color: var(--black-text);
+}
+.loading {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+.loading:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 50px auto;
+    border-radius: 50%;
+    border: 6px solid #000;
+    border-color: #000 transparent #000 transparent;
+    animation: loading 1s linear infinite;
+    }
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+  
