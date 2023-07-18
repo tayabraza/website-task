@@ -2,7 +2,7 @@
 
   <nav>
     <button type="button" class="menu-toggle" @click="menuShow = !menuShow"></button>
-    <ul v-show="menuShow">
+    <ul v-show="menuShow" ref="menu">
       <li><RouterLink to="/"> {{ store.menu.item1 }} </RouterLink></li>
       <li><RouterLink to="/what-we-do"> {{ store.menu.item2 }} </RouterLink></li>
       <li><RouterLink to="/the-digital-divide"> {{ store.menu.item3 }} </RouterLink></li>
@@ -14,12 +14,19 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue'
+  import { ref, onMounted } from 'vue'
   import { RouterLink } from 'vue-router'
   import { useMenuStore } from '../stores/menu'
 
   let store = useMenuStore();
+  let menu = ref(null);
   let menuShow = ref(false);
+
+  onMounted(() => {
+
+    menu.value.querySelectorAll('li').forEach(li => li.addEventListener('click', () => menuShow.value = !menuShow));
+    
+  });
 
 </script>
 
