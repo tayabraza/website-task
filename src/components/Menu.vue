@@ -11,22 +11,45 @@
       <li><RouterLink to="/insights"> {{ store.menu.item6 }} </RouterLink></li>
     </ul>
   </nav>
+
 </template>
 
 <script setup>
   import { ref, onMounted } from 'vue'
   import { RouterLink } from 'vue-router'
   import { useMenuStore } from '../stores/menu'
+  import { useSinglePrismicDocument } from "@prismicio/vue";
+
+  let { data } = useSinglePrismicDocument("page");
 
   let store = useMenuStore();
   let menu = ref(null);
   let menuShow = ref(false);
+  let page = ref('');
 
   onMounted(() => {
 
     menu.value.querySelectorAll('li').forEach(li => li.addEventListener('click', () => menuShow.value = !menuShow));
-    
+
   });
+
+  let timer = 100;
+
+  function fetchData() {
+    setTimeout( () => {
+      try {
+        if ( !sessionStorage.page && data._value.data){
+            sessionStorage.page = JSON.stringify(data._value.data);
+            page.value = JSON.parse(sessionStorage.page);
+        } 
+      } catch (err) {
+        timer += 100;
+        fetchData();
+      }
+    }, timer)
+  }
+
+  fetchData();
 
 </script>
 

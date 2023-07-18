@@ -13,15 +13,28 @@
 <script setup>
 
   import { ref } from 'vue'
-  import { useSinglePrismicDocument } from "@prismicio/vue";
 
-  let { data } = useSinglePrismicDocument("page");
+  let page = ref({})
   let loading = ref(false);
-  let page = ref({});
+  let timer = 200;
 
-  setTimeout(()=>{
-      page.value = data._value.data;
+  if ( sessionStorage.page ) {
+      page.value = JSON.parse(sessionStorage.page);
       loading.value = true;
-  },1000);
+  }
+
+  function fetchData() {
+    setTimeout( () => {
+      if ( sessionStorage.page ) {
+          page.value = JSON.parse(sessionStorage.page);
+          loading.value = true;
+      } else {
+        timer += 200;
+        fetchData();
+      }
+    }, timer)
+  }
+
+  fetchData();
 
 </script>
